@@ -48,6 +48,35 @@
 
 // Console.WriteLine(String.Join(" ", revers(mas)));
 
+// int[] Mas(int size, int min, int max)
+// {
+//     int[] arr = new int[size];
+//     for (int i = 0; i < size; i++)
+//     {
+//         arr[i] = new Random().Next(min, max + 1);
+//     }
+//     return arr;
+// }
+
+// int[] mas = Mas(4, -9, 9);
+
+// Console.WriteLine(String.Join(" ", mas));
+
+// bool Find(int[] arr, int f)
+// {
+//     for (int i = 0; i < arr.Length; i++)
+//     {
+//         if (arr[i] == f) return true;
+//     }
+//     return false;
+// }
+
+// Console.Write("Число для поиска: ");
+// int find = int.Parse(Console.ReadLine());
+
+// if (Find(mas, find)) Console.WriteLine("Yes");
+// else Console.WriteLine("No");
+
 int[] Mas(int size, int min, int max)
 {
     int[] arr = new int[size];
@@ -58,35 +87,38 @@ int[] Mas(int size, int min, int max)
     return arr;
 }
 
-int[] mas = Mas(4, -9, 9);
-
+int[] mas = Mas(5, 0, 10);
 Console.WriteLine(String.Join(" ", mas));
 
-// void Find(int[] arr, int f)
+// int amount(int[] arr)
 // {
-//     int temp = 0;
+//     int a = 0;
+
 //     for (int i = 0; i < arr.Length; i++)
-//         if (arr[i] == f)
-//         {
-//             temp = 1;
-//         }
-//     if (temp == 1) Console.WriteLine("Yes");
-//     else Console.WriteLine("No");
+//     {
+//         if (arr[i] >= 10 && arr[i] <= 99) a += 1;
+//     }
+
+//     return a;
 // }
 
-bool Find(int[] arr, int f)
+// Console.WriteLine($"Answer: {amount(mas)}");
+
+///////////////////////////////////////
+
+int[] ResultArray(int[] array)
 {
-    for (int i = 0; i < arr.Length; i++)
-    {
-        if (arr[i] == f) return true;
-    }
-    return false;
+int size = array.Length / 2;
+if (array.Length % 2 == 1) size++;
+int[] result = new int[size];
+for (int i = 0; i < array.Length / 2; i++)
+{
+
+result[i] = array[i] * array[array.Length - 1 - i];
+}
+if (array.Length % 2 == 1) result[size-1] = array[array.Length / 2];
+return result;
 }
 
-Console.Write("Число для поиска: ");
-int find = int.Parse(Console.ReadLine());
-
-if (Find(mas, find)) Console.WriteLine("Yes");
-else Console.WriteLine("No");
-
-
+int[] group = ResultArray(mas);
+Console.WriteLine(String.Join(" ", group));
